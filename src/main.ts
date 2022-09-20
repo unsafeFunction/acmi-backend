@@ -7,7 +7,7 @@ async function bootstrap() {
   app.enableCors();
 
   const config = new DocumentBuilder()
-    .setTitle('Median')
+    .setTitle('Acmi')
     .setDescription('The Acmi API description')
     .setVersion('0.1')
     .build();
@@ -15,6 +15,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
