@@ -10,6 +10,9 @@ async function bootstrap() {
     .setTitle('Acmi')
     .setDescription('The Acmi API description')
     .setVersion('0.1')
+    .addBearerAuth()
+    .addTag('auth')
+    .addTag('care')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
