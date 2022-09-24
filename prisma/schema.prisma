@@ -28,17 +28,37 @@ model Care {
   type CARE_TYPE @default(MORNING)
   user User @relation(fields: [user_id], references: [id])
   user_id String @db.Uuid
+  steps CareStep[]
   created_at DateTime @default(now())
   updated_at DateTime @default(now()) @updatedAt
 }
 
-model Routine {
+model CareStep {
   id String @id @default(uuid()) @db.Uuid
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  type PRODUCT_TYPE
+  care_id String @db.Uuid
+  care Care @relation(fields: [care_id], references: [id])
+  product_name String @db.VarChar(100)
+  custom_type String @db.VarChar(40)
+  order Int @default(0)
+  days_to_use String
+
+  @@unique([id, order])
+}
+
+enum PRODUCT_TYPE {
+  CREAM
+  TONIC
+  SERUM
+  MASK
+  GEL
+  FOAM
+  PEELING
+  CUSTOM
 }
 
 enum CARE_TYPE {
   MORNING
   EVENING
+  CUSTOM
 }

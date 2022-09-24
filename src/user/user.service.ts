@@ -1,17 +1,15 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 import type { GetParams } from 'src/types/requests';
 import { User, Prisma } from '@prisma/client';
-
-// This should be a real class/interface representing a user entity
-
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(private prisma: PrismaService) { }
 
   findOne = async (
     userWhereUniqueInput: Prisma.UserWhereUniqueInput,
   ): Promise<User> => {
+    console.log(userWhereUniqueInput);
     return await this.prisma.user.findUniqueOrThrow({
       where: userWhereUniqueInput,
     });
