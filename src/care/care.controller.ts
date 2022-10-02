@@ -44,7 +44,7 @@ export class CareController {
     name: 'user_id',
   })
   async getUserCare(@Param() params) {
-    return this.careService.getUserCares(params);
+    return this.careService.getUserCares(params.user_id);
   }
 
   @UseGuards(JwtAuthGuard)

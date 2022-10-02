@@ -13,7 +13,7 @@ class CareDto {
   @ApiProperty({ required: true, enum: ['MORNING', 'EVENING', 'CUSTOM'] })
   type: CARE_TYPE;
 
-  @ApiProperty({ type: [CareStepDto], isArray: true, required: true })
+  @ApiProperty({ type: [CareStepDto], isArray: true })
   steps: CareStep[];
 }
 

@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
-import type { GetParams, UpdateParams } from 'src/types/requests';
+import type { UpdateParams } from 'src/types/requests';
 import { Care, Prisma } from '@prisma/client';
 
 @Injectable()
@@ -15,16 +15,10 @@ export class CareService {
     return care;
   };
 
-  getUserCares = async (
-    params: GetParams<
-      Prisma.CareWhereUniqueInput,
-      Prisma.CareWhereInput,
-      Prisma.CareOrderByWithRelationInput
-    >,
-  ): Promise<Care[]> => {
+  getUserCares = async (user_id: string): Promise<Care[]> => {
     const care = this.prisma.care.findMany({
       where: {
-        user_id: params.where.id,
+        user_id,
       },
       include: {
         steps: true,
