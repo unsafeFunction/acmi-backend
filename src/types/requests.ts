@@ -6,4 +6,9 @@ interface GetParams<T, D, K> {
   orderBy?: K;
 }
 
-export { GetParams };
+interface UpdateParams<T, D> {
+  where: T;
+  data: D;
+}
+
+export { GetParams, UpdateParams };

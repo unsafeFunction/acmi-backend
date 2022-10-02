@@ -9,7 +9,6 @@ export class UserService {
   findOne = async (
     userWhereUniqueInput: Prisma.UserWhereUniqueInput,
   ): Promise<User> => {
-    console.log(userWhereUniqueInput);
     return await this.prisma.user.findUniqueOrThrow({
       where: userWhereUniqueInput,
     });

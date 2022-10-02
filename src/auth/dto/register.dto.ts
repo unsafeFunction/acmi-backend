@@ -8,10 +8,7 @@ class RegisterDto {
   password: string;
 
   @ApiProperty()
-  first_name: string;
-
-  @ApiProperty()
-  last_name: string;
+  name: string;
 }
 
 export default RegisterDto;
